@@ -1,98 +1,99 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- displays site properly based on user's device -->
 
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="./images/favicon-32x32.png"
-        />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-        <title>Frontend Mentor | QR code component</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
 
-        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400..700&display=swap");
+    <title>Frontend Mentor | QR code component</title>
 
-            :root {
-                --slate-bg: #d5e1ef;
-                --slate-500: #68778d;
-                --slate-900: #1f314f;
-                --white: #ffffff;
-                --content-padding: 16px;
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400..700&display=swap");
 
-                --card-bd-radius: 20px;
-                font-family: "Outfit", sans-serif;
-            }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-            body {
-                background-color: var(--slate-bg);
-                color: var(--slate-900);
-            }
+        :root {
+            --slate-bg: #d5e1ef;
+            --slate-500: #68778d;
+            --slate-900: #1f314f;
+            --white: #ffffff;
+            --content-padding: 16px;
 
-            main {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 100dvh;
-                width: 100dvw;
-            }
+            --card-bd-radius: 20px;
+            font-family: "Outfit", sans-serif;
+        }
 
-            .card {
-                background-color: var(--white);
-                border-radius: var(--card-bd-radius);
+        body {
+            background-color: var(--slate-bg);
+            color: var(--slate-900);
+        }
 
-                display: grid;
-                grid-template-rows: 2fr 1fr 1fr;
-                grid-template-columns: 1;
-                grid-gap: 24px;
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100dvh;
+            width: 100dvw;
+        }
 
-                padding: 16px;
-                padding-bottom: 40px;
-                width: 320px;
-                height: 499px;
-                text-align: center;
-                box-shadow: 0px 4px 4 0 rgba(0, 0, 0, 0.25);
-            }
+        .card {
+            background-color: var(--white);
+            border-radius: var(--card-bd-radius);
 
-            .card img {
-                width: inherit;
-                border-radius: var(--card-bd-radius);
-            }
+            display: grid;
+            grid-template-rows: 2fr 1fr 1fr;
+            grid-gap: 24px;
 
-            .card h2 {
-                font-size: 22px;
-                line-height: 120%;
-                letter-spacing: 0px;
-                font-weight: 700;
-                padding: 0px var(--content-padding);
-                margin: 0 auto;
-            }
+            padding: 16px;
+            padding-bottom: 40px;
+            width: min(100% - 48px, 320px);
+            text-align: center;
+            box-shadow: 0px 4px 4 0 rgba(0, 0, 0, 0.25);
+            height: min(100% - 48px, 499px);
+        }
 
-            .card p {
-                font-size: 15px;
-                line-height: 140%;
-                letter-spacing: 0.2px;
-                color: var(--slate-500);
-                padding: 0px var(--content-padding);
-                margin: 0 auto;
-            }
-        </style>
-    </head>
-    <body>
-        <main>
-            <div class="card">
-                <img src="./images/image-qr-code.png" alt="QR code image" />
-                <h2>Improve your front-end skills by building projects</h2>
-                <p>
-                    Scan the QR code to visit Frontend Mentor and take your
-                    coding skills to the next level
-                </p>
-            </div>
-        </main>
-    </body>
+        .card img {
+            width: 100%;
+            border-radius: var(--card-bd-radius);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            line-height: 120%;
+            letter-spacing: 0px;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 15px;
+            line-height: 140%;
+            letter-spacing: 0.2px;
+            color: var(--slate-500);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="card">
+            <img src="./images/image-qr-code.png" alt="QR code image" />
+            <h2>Improve your front-end skills by building projects</h2>
+            <p>
+                Scan the QR code to visit Frontend Mentor and take your
+                coding skills to the next level
+            </p>
+        </div>
+    </main>
+</body>
+
 </html>
