@@ -28,7 +28,8 @@ Each challenge folder contains:
 
 | # | Challenge | Difficulty | Live | Feedback |
 |---|-----------|------------|------|----------|
-| 1 | [QR Code Component](./qr-code-component-main/) | 🟢 Newbie | [View →](./qr-code-component-main/index.html) | [Read feedback →](./qr-code-component-main/feedback.md) |
+| 1 | [Blog Preview Card](./blog-preview-card-main/) | 🟢 Newbie | [View →](./blog-preview-card-main/index.html) | [Read feedback →](./blog-preview-card-main/feedback.md) |
+| 2 | [QR Code Component](./qr-code-component-main/) | 🟢 Newbie | [View →](./qr-code-component-main/index.html) | [Read feedback →](./qr-code-component-main/feedback.md) |
 
 ---
 
