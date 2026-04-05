@@ -34,8 +34,4 @@ Each challenge folder contains:
 
 ## Methodology
 
-All HTML and CSS is written by hand in a text editor. The design is matched visually using the provided JPG references and style guides. No AI is used to write the solution code. After completion, the solution is submitted to an AI for evaluation — the AI grades the visual accuracy, code quality, responsiveness, and best practices, then writes its findings to `feedback.md`.
-
----
-
-*Built by [Letladi](https://github.com/letladi) · Challenges sourced from [frontendmentor.io](https://www.frontendmentor.io)*
+All HTML and CSS is written by hand in a text editor (ZED). The design is matched visually using the provided Figma references and style guides. No AI is used to write the solution code. After completion, the solution is submitted to an AI for evaluation — the AI grades the visual accuracy, code quality, responsiveness, and best practices, then writes its findings to `feedback.md`.
