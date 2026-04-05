@@ -1,586 +1,577 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frontend Mentor Challenges — Letladi</title>
-    <meta
-      name="description"
-      content="A collection of Frontend Mentor challenges, all hand-coded by Letladi. Each challenge has been evaluated by AI with detailed feedback."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      /* ── Reset ── */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Mentor Challenges — Letladi</title>
+  <meta name="description"
+    content="A collection of Frontend Mentor challenges, all hand-coded by Letladi. Each challenge has been evaluated by AI with detailed feedback." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── Design tokens ── */
+    :root {
+      --bg: hsl(224, 20%, 8%);
+      --bg-card: hsl(224, 18%, 12%);
+      --bg-card-hover: hsl(224, 18%, 15%);
+      --border: hsl(224, 15%, 20%);
+      --border-hover: hsl(224, 15%, 35%);
+      --text-primary: hsl(210, 40%, 96%);
+      --text-secondary: hsl(215, 20%, 60%);
+      --text-muted: hsl(215, 15%, 45%);
+      --accent: hsl(248, 87%, 70%);
+      --accent-glow: hsl(248, 87%, 70%, 0.15);
+      --accent-2: hsl(195, 85%, 60%);
+      --green: hsl(145, 65%, 55%);
+      --font: "Outfit", sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text-primary);
+      min-height: 100dvh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise texture overlay ── */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Gradient orbs ── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+      animation: drift 20s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: var(--accent);
+      top: -200px;
+      left: -200px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: var(--accent-2);
+      bottom: -150px;
+      right: -150px;
+      animation-delay: -10s;
+    }
+
+    @keyframes drift {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
       }
 
-      /* ── Design tokens ── */
-      :root {
-        --bg: hsl(224, 20%, 8%);
-        --bg-card: hsl(224, 18%, 12%);
-        --bg-card-hover: hsl(224, 18%, 15%);
-        --border: hsl(224, 15%, 20%);
-        --border-hover: hsl(224, 15%, 35%);
-        --text-primary: hsl(210, 40%, 96%);
-        --text-secondary: hsl(215, 20%, 60%);
-        --text-muted: hsl(215, 15%, 45%);
-        --accent: hsl(248, 87%, 70%);
-        --accent-glow: hsl(248, 87%, 70%, 0.15);
-        --accent-2: hsl(195, 85%, 60%);
-        --green: hsl(145, 65%, 55%);
-        --font: "Outfit", sans-serif;
-        --radius-sm: 8px;
-        --radius-md: 16px;
-        --radius-lg: 24px;
+      33% {
+        transform: translate(40px, -30px) scale(1.05);
       }
 
-      html {
-        scroll-behavior: smooth;
+      66% {
+        transform: translate(-20px, 20px) scale(0.97);
       }
+    }
 
-      body {
-        font-family: var(--font);
-        background-color: var(--bg);
-        color: var(--text-primary);
-        min-height: 100dvh;
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
+    /* ── Layout ── */
+    .site-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-      /* ── Noise texture overlay ── */
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-        pointer-events: none;
-        z-index: 0;
-      }
+    /* ── Header ── */
+    header {
+      padding: 80px 0 64px;
+      text-align: center;
+    }
 
-      /* ── Gradient orbs ── */
-      .orb {
-        position: fixed;
-        border-radius: 50%;
-        filter: blur(120px);
-        opacity: 0.12;
-        pointer-events: none;
-        z-index: 0;
-        animation: drift 20s ease-in-out infinite;
-      }
-      .orb-1 {
-        width: 600px;
-        height: 600px;
-        background: var(--accent);
-        top: -200px;
-        left: -200px;
-        animation-delay: 0s;
-      }
-      .orb-2 {
-        width: 500px;
-        height: 500px;
-        background: var(--accent-2);
-        bottom: -150px;
-        right: -150px;
-        animation-delay: -10s;
-      }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: hsl(224, 18%, 12%, 0.8);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+      margin-bottom: 28px;
+      backdrop-filter: blur(8px);
+    }
 
-      @keyframes drift {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        33% {
-          transform: translate(40px, -30px) scale(1.05);
-        }
-        66% {
-          transform: translate(-20px, 20px) scale(0.97);
-        }
-      }
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px var(--green);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
 
-      /* ── Layout ── */
-      .site-wrapper {
-        position: relative;
-        z-index: 1;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
+    @keyframes pulse {
 
-      /* ── Header ── */
-      header {
-        padding: 80px 0 64px;
-        text-align: center;
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 14px;
-        border-radius: 100px;
-        border: 1px solid var(--border);
-        background: hsl(224, 18%, 12%, 0.8);
-        font-size: 13px;
-        font-weight: 500;
-        color: var(--text-secondary);
-        letter-spacing: 0.02em;
-        margin-bottom: 28px;
-        backdrop-filter: blur(8px);
-      }
-
-      .badge-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--green);
-        box-shadow: 0 0 10px var(--green);
-        animation: pulse 2.5s ease-in-out infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.4;
-        }
-      }
-
-      h1 {
-        font-size: clamp(2.4rem, 6vw, 4rem);
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        line-height: 1.1;
-        margin-bottom: 20px;
-        background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .header-subtitle {
-        font-size: 1.1rem;
-        color: var(--text-secondary);
-        max-width: 600px;
-        margin: 0 auto 16px;
-        font-weight: 400;
-        line-height: 1.7;
-      }
-
-      /* ── Callouts ── */
-      .callouts {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin-top: 32px;
-      }
-
-      .callout {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        border-radius: 100px;
-        border: 1px solid var(--border);
-        background: hsl(224, 18%, 11%);
-        font-size: 13px;
-        color: var(--text-secondary);
-        font-weight: 500;
-      }
-
-      .callout-icon {
-        font-size: 15px;
-      }
-
-      /* ── Section header ── */
-      .section-header {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        margin-bottom: 28px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .section-title {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text-muted);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      .section-count {
-        font-size: 13px;
-        color: var(--text-muted);
-        font-weight: 400;
-      }
-
-      /* ── Challenge grid ── */
-      .challenges-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 20px;
-        padding-bottom: 80px;
-      }
-
-      /* ── Challenge card ── */
-      .card {
-        position: relative;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        overflow: hidden;
-        text-decoration: none;
-        color: inherit;
-        display: flex;
-        flex-direction: column;
-        transition: border-color 0.25s ease, transform 0.25s ease,
-          box-shadow 0.25s ease, background 0.25s ease;
-      }
-
-      .card:hover {
-        border-color: var(--border-hover);
-        background: var(--bg-card-hover);
-        transform: translateY(-4px);
-        box-shadow: 0 20px 60px hsl(0, 0%, 0%, 0.4),
-          0 0 0 1px hsl(248, 87%, 70%, 0.1);
-      }
-
-      .card:hover .card-arrow {
-        transform: translate(3px, -3px);
+      0%,
+      100% {
         opacity: 1;
       }
 
-      /* Gradient top border */
-      .card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 16px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ── Callouts ── */
+    .callouts {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .callout {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: hsl(224, 18%, 11%);
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .callout-icon {
+      font-size: 15px;
+    }
+
+    /* ── Section header ── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .section-count {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ── Challenge grid ── */
+    .challenges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      padding-bottom: 80px;
+    }
+
+    /* ── Challenge card ── */
+    .card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.25s ease, transform 0.25s ease,
+        box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px hsl(0, 0%, 0%, 0.4),
+        0 0 0 1px hsl(248, 87%, 70%, 0.1);
+    }
+
+    .card:hover .card-arrow {
+      transform: translate(3px, -3px);
+      opacity: 1;
+    }
+
+    /* Gradient top border */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg,
           transparent,
           var(--accent),
-          transparent
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
+          transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    /* ── Card image wrap + overlay ── */
+    .card-image-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-preview {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      border-bottom: 1px solid var(--border);
+      transition: transform 0.35s ease;
+    }
+
+    .card:hover .card-preview {
+      transform: scale(1.03);
+    }
+
+    /* Floating feedback badge over image */
+    .feedback-link {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 100px;
+      border: 1px solid hsl(248, 87%, 70%, 0.35);
+      background: hsl(224, 20%, 8%, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      letter-spacing: 0.02em;
+      transition: background 0.2s ease, border-color 0.2s ease,
+        transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0;
+      transform: translateY(4px);
+      z-index: 2;
+    }
+
+    .card:hover .feedback-link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feedback-link:hover {
+      background: hsl(224, 20%, 8%, 0.95);
+      border-color: hsl(248, 87%, 70%, 0.7);
+    }
+
+    /* ── Card body ── */
+    .card-body {
+      padding: 20px 24px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .difficulty-badge {
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .difficulty-badge.newbie {
+      background: hsl(145, 65%, 55%, 0.15);
+      color: var(--green);
+      border: 1px solid hsl(145, 65%, 55%, 0.3);
+    }
+
+    .difficulty-badge.junior {
+      background: hsl(40, 90%, 60%, 0.15);
+      color: hsl(40, 90%, 60%);
+      border: 1px solid hsl(40, 90%, 60%, 0.3);
+    }
+
+    .difficulty-badge.intermediate {
+      background: hsl(25, 90%, 60%, 0.15);
+      color: hsl(25, 90%, 60%);
+      border: 1px solid hsl(25, 90%, 60%, 0.3);
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* Visit link row */
+    .card-visit {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-top: 4px;
+      width: fit-content;
+      transition: color 0.2s ease;
+    }
+
+    .card-visit:hover {
+      color: var(--text-primary);
+    }
+
+    .card-arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .card-visit:hover .card-arrow {
+      transform: translate(2px, -2px);
+    }
+
+    /* ── Skills tags ── */
+    .skill-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .skill-tag {
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: hsl(224, 15%, 18%);
+      border: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ── Footer ── */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      color: var(--text-primary);
+    }
+
+    .site-footer strong {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header {
+        padding: 56px 0 48px;
       }
 
-      .card:hover::before {
-        opacity: 1;
+      .challenges-grid {
+        grid-template-columns: 1fr;
       }
+    }
+  </style>
+</head>
 
-      /* ── Card image wrap + overlay ── */
-      .card-image-wrap {
-        position: relative;
-        overflow: hidden;
-      }
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
 
-      .card-preview {
-        width: 100%;
-        aspect-ratio: 16 / 10;
-        object-fit: cover;
-        object-position: top center;
-        display: block;
-        border-bottom: 1px solid var(--border);
-        transition: transform 0.35s ease;
-      }
-
-      .card:hover .card-preview {
-        transform: scale(1.03);
-      }
-
-      /* Floating feedback badge over image */
-      .feedback-link {
-        position: absolute;
-        bottom: 12px;
-        right: 12px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 11.5px;
-        font-weight: 600;
-        color: var(--accent);
-        text-decoration: none;
-        padding: 6px 12px;
-        border-radius: 100px;
-        border: 1px solid hsl(248, 87%, 70%, 0.35);
-        background: hsl(224, 20%, 8%, 0.75);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        letter-spacing: 0.02em;
-        transition: background 0.2s ease, border-color 0.2s ease,
-          transform 0.2s ease, opacity 0.2s ease;
-        opacity: 0;
-        transform: translateY(4px);
-        z-index: 2;
-      }
-
-      .card:hover .feedback-link {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .feedback-link:hover {
-        background: hsl(224, 20%, 8%, 0.95);
-        border-color: hsl(248, 87%, 70%, 0.7);
-      }
-
-      /* ── Card body ── */
-      .card-body {
-        padding: 20px 24px 24px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .card-meta {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-
-      .difficulty-badge {
-        padding: 3px 10px;
-        border-radius: 100px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-      }
-
-      .difficulty-badge.newbie {
-        background: hsl(145, 65%, 55%, 0.15);
-        color: var(--green);
-        border: 1px solid hsl(145, 65%, 55%, 0.3);
-      }
-      .difficulty-badge.junior {
-        background: hsl(40, 90%, 60%, 0.15);
-        color: hsl(40, 90%, 60%);
-        border: 1px solid hsl(40, 90%, 60%, 0.3);
-      }
-      .difficulty-badge.intermediate {
-        background: hsl(25, 90%, 60%, 0.15);
-        color: hsl(25, 90%, 60%);
-        border: 1px solid hsl(25, 90%, 60%, 0.3);
-      }
-
-      .card-title {
-        font-size: 1.15rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        line-height: 1.3;
-      }
-
-      .card-desc {
-        font-size: 0.88rem;
-        color: var(--text-secondary);
-        line-height: 1.6;
-        flex: 1;
-      }
-
-      /* Visit link row */
-      .card-visit {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--text-muted);
-        text-decoration: none;
-        margin-top: 4px;
-        width: fit-content;
-        transition: color 0.2s ease;
-      }
-
-      .card-visit:hover {
-        color: var(--text-primary);
-      }
-
-      .card-arrow {
-        display: inline-block;
-        transition: transform 0.2s ease;
-      }
-
-      .card-visit:hover .card-arrow {
-        transform: translate(2px, -2px);
-      }
-
-      /* ── Skills tags ── */
-      .skill-tags {
-        display: flex;
-        gap: 6px;
-        flex-wrap: wrap;
-        margin-top: 4px;
-      }
-
-      .skill-tag {
-        padding: 2px 8px;
-        border-radius: 4px;
-        background: hsl(224, 15%, 18%);
-        border: 1px solid var(--border);
-        font-size: 11px;
-        color: var(--text-muted);
-        font-weight: 500;
-      }
-
-      /* ── Footer ── */
-      .site-footer {
-        border-top: 1px solid var(--border);
-        padding: 32px 0;
-        text-align: center;
-        font-size: 13px;
-        color: var(--text-muted);
-        position: relative;
-        z-index: 1;
-      }
-
-      .site-footer a {
-        color: var(--text-secondary);
-        text-decoration: none;
-      }
-
-      .site-footer a:hover {
-        color: var(--text-primary);
-      }
-
-      .site-footer strong {
-        color: var(--text-secondary);
-        font-weight: 600;
-      }
-
-      /* ── Responsive ── */
-      @media (max-width: 600px) {
-        header {
-          padding: 56px 0 48px;
-        }
-        .challenges-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-
-    <div class="site-wrapper">
-      <!-- ── Header ── -->
-      <header>
-        <div class="badge">
-          <span class="badge-dot"></span>
-          Frontend Mentor Challenges
-        </div>
-
-        <h1>Built by Hand.<br />Evaluated by AI.</h1>
-
-        <p class="header-subtitle">
-          Every challenge on this page was coded from scratch — no scaffolding,
-          no templates, no copy-paste. Just HTML, CSS, and deliberate practice.
-        </p>
-
-        <div class="callouts">
-          <span class="callout">
-            <span class="callout-icon">✍️</span>
-            Hand-coded from scratch
-          </span>
-          <span class="callout">
-            <span class="callout-icon">🤖</span>
-            AI-graded with detailed feedback
-          </span>
-          <span class="callout">
-            <span class="callout-icon">📐</span>
-            Pixel-matched to design specs
-          </span>
-        </div>
-      </header>
-
-      <!-- ── Challenges ── -->
-      <div class="section-header">
-        <span class="section-title">Challenges</span>
-        <span class="section-count">1 completed</span>
+  <div class="site-wrapper">
+    <!-- ── Header ── -->
+    <header>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Frontend Mentor Challenges
       </div>
 
-      <div class="challenges-grid" id="challenges">
+      <h1>Built by Hand.<br />Evaluated by AI.</h1>
 
-        <!-- QR Code Component -->
-        <div class="card" id="card-qr-code-component">
-          <div class="card-image-wrap">
-            <img
-              class="card-preview"
-              src="./qr-code-component-main/preview.jpg"
-              alt="QR Code Component preview"
-            />
-            <a
-              href="./qr-code-component-main/feedback.md"
-              class="feedback-link"
-              id="feedback-qr-code-component"
-              aria-label="Read AI feedback for QR Code Component"
-            >
-              🤖 AI Feedback
-            </a>
-          </div>
-          <div class="card-body">
-            <div class="card-meta">
-              <span class="difficulty-badge newbie">Newbie</span>
-            </div>
-            <h2 class="card-title">QR Code Component</h2>
-            <p class="card-desc">
-              A centred card displaying a QR code image with heading and
-              descriptive text. Focuses on layout centring, CSS custom
-              properties, and typography.
-            </p>
-            <div class="skill-tags">
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
-              <span class="skill-tag">Flexbox</span>
-              <span class="skill-tag">Custom Properties</span>
-            </div>
-            <a
-              href="./qr-code-component-main/index.html"
-              class="card-visit"
-              aria-label="View QR Code Component challenge"
-            >
-              View challenge
-            </a>
-          </div>
-        </div>
+      <p class="header-subtitle">
+        Every challenge on this page was coded from scratch — no scaffolding,
+        no templates, no copy-paste. Just HTML, CSS, and deliberate practice.
+      </p>
 
+      <div class="callouts">
+        <span class="callout">
+          <span class="callout-icon">✍️</span>
+          Hand-coded from scratch
+        </span>
+        <span class="callout">
+          <span class="callout-icon">🤖</span>
+          AI-graded with detailed feedback
+        </span>
+        <span class="callout">
+          <span class="callout-icon">📐</span>
+          Pixel-matched to design specs
+        </span>
       </div>
+    </header>
+
+    <!-- ── Challenges ── -->
+    <div class="section-header">
+      <span class="section-title">Challenges</span>
+      <span class="section-count">1 completed</span>
     </div>
 
-    <!-- ── Site footer ── -->
-    <footer class="site-footer">
-      <div class="site-wrapper">
-        Challenge solution built by Letladi ·
-        <a
-          href="https://www.frontendmentor.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Frontend Mentor</a
-        >
-        · Challenge feedback generated by <strong>Antigravity AI</strong>
+    <div class="challenges-grid" id="challenges">
+
+      <!-- QR Code Component -->
+      <div class="card" id="card-qr-code-component">
+        <div class="card-image-wrap">
+          <img class="card-preview" src="./qr-code-component-main/preview.jpg" alt="QR Code Component preview" />
+          <a href="./qr-code-component-main/feedback.md" class="feedback-link" id="feedback-qr-code-component"
+            aria-label="Read AI feedback for QR Code Component">
+            🤖 AI Feedback
+          </a>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="difficulty-badge newbie">Newbie</span>
+          </div>
+          <h2 class="card-title">QR Code Component</h2>
+          <p class="card-desc">
+            A centred card displaying a QR code image with heading and
+            descriptive text. Focuses on layout centring, CSS custom
+            properties, and typography.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
+            <span class="skill-tag">Flexbox</span>
+            <span class="skill-tag">Custom Properties</span>
+          </div>
+          <a href="./qr-code-component-main/index.html" class="card-visit"
+            aria-label="View QR Code Component challenge">
+            View challenge
+          </a>
+        </div>
       </div>
-    </footer>
-  </body>
+
+    </div>
+  </div>
+
+  <!-- ── Site footer ── -->
+  <footer class="site-footer">
+    <div class="site-wrapper">
+      Challenge solution built by Letladi ·
+      <a href="https://www.frontendmentor.io" target="_blank" rel="noopener noreferrer">Frontend Mentor</a>
+      · Challenge feedback generated by <strong>Antigravity</strong>
+    </div>
+  </footer>
+</body>
+
 </html>

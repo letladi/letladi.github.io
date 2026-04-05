@@ -2,7 +2,7 @@
 
 > **Every challenge here was hand-coded from scratch** — no scaffolding, no copy-paste, no frameworks. Just HTML, CSS, and deliberate practice. Each submission has been independently evaluated by AI with a detailed `feedback.md` file inside the challenge folder.
 
-🌐 **Live site:** [letladi.github.io/fm](https://letladi.github.io/fm) *(update URL once GitHub Pages is configured)*
+🌐 **Live site:** [letladi.github.io](https://letladi.github.io) 
 
 ---
 
