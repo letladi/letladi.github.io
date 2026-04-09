@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Young+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400..700&display=swap");
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --white: hsl(0, 0%, 100%);
+    --stone-100: hsl(30, 54%, 90%);
+    --stone-150: hsl(30, 18%, 87%);
+    --stone-600: hsl(30, 10%, 34%);
+    --stone-900: hsl(24, 5%, 18%);
+
+    --brown-800: hsl(14, 45%, 36%);
+    --rose-800: hsl(332, 51%, 32%);
+    --rose-50: hsl(330, 100%, 98%);
+
+    --mobile-break-pt: 375px;
+    --card-min-width: 320px;
+
+    --body-font-size: 16px;
+
+    --max-body-width: 736px;
+    --card-radius: 15px;
+    --image-radius: 12px;
+    --section-radius: 10px;
+
+    --min-content-width: 600px;
+    --body-padding: 100px;
+    --card-padding: 40px;
+    --card-section-gap: 24px;
+    --section-padding: 15px;
+    --list-padding: 20px;
+
+    --desktop-tablet-body-padding: 128px 48px;
+    --mobile-body-padding: 0px 0px;
+
+    --prep-time-padding: 24px;
+    --prep-time-gaps: 16px;
+    --list-gaps: 16px;
+
+    --list-marker-font-size: 10px;
+    --list-padding: 24px;
+}
+
+.brown-800 {
+    color: var(--brown-800);
+}
+
+.rose-800 {
+    color: var(--rose-800);
+}
+
+.rose-50 {
+    color: var(--rose-50);
+}
+
+.stone-600 {
+    color: var(--stone-600);
+}
+
+.stone-900 {
+    color: var(--stone-900);
+}
+
+body {
+    font-size: var(--body-font-size);
+    font-family: "Outfit", sans-serif;
+    background-color: var(--stone-100);
+    color: var(--stone-600);
+    min-height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    justify-content: center;
+}
+
+em {
+    font-weight: 700;
+    font-style: normal;
+}
+
+h1,
+.ingredients h2,
+.instructions h2,
+.nutrition h2 {
+    font-family: "Young Serif";
+    color: var(--brown-800);
+    font-weight: 400;
+}
+
+article {
+    background-color: var(--white);
+    width: min(var(--min-content-width), 100%);
+    max-width: var(--max-body-width);
+    border-radius: var(--card-radius);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-section-gap);
+}
+
+.card-content {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-section-gap);
+    padding: 0px var(--card-padding) var(--card-padding);
+}
+
+article img {
+    width: 100%;
+}
+
+ul,
+ol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--prep-time-gaps);
+    padding-top: var(--list-gaps);
+    padding-left: var(--list-gaps);
+}
+
+.prep-time {
+    background-color: var(--rose-50);
+    border-radius: var(--section-radius);
+    padding: var(--prep-time-padding);
+}
+
+.prep-time h2 {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.prep-time li::marker {
+    color: var(--rose-800);
+    font-size: var(--list-marker-font-size);
+}
+
+.ingredients ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredients li,
+.instructions li,
+.prep-time li {
+    padding-left: var(--list-gaps);
+}
+
+.ingredients li::marker {
+    font-size: var(--list-marker-font-size);
+    color: var(--brown-800);
+}
+
+.instructions li::marker {
+    color: var(--brown-800);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--stone-100);
+    margin-top: var(--list-gaps);
+}
+
+.nutrition {
+    display: flex;
+    flex-direction: column;
+    gap: var(--list-gaps);
+}
+
+.nutrition table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.nutrition td {
+    padding: var(--list-gaps);
+    padding-left: var(--list-padding);
+}
+
+.nutrition tr:not(:last-child) {
+    border-bottom: 1px solid var(--stone-100);
+}
+
+.nutrition td:last-child {
+    font-weight: 600;
+    color: var(--brown-800);
+}
+
+.nutrition tr::not-last-child {
+    border-bottom: 1px solid var(--stone-100);
+}
+
+@media (width > 375px) {
+    body {
+        padding: var(--desktop-tablet-body-padding);
+    }
+
+    article {
+        padding: var(--card-padding);
+    }
+
+    .card-content {
+        padding: unset;
+    }
+
+    article img {
+        border-radius: var(--image-radius);
+    }
+}
