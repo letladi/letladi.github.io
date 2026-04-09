@@ -87,7 +87,7 @@ h1,
 .ingredients h2,
 .instructions h2,
 .nutrition h2 {
-    font-family: "Young Serif";
+    font-family: "Young Serif", sans-serif;
     color: var(--brown-800);
     font-weight: 400;
 }
@@ -185,17 +185,13 @@ hr {
     padding-left: var(--list-padding);
 }
 
-.nutrition tr:not(:last-child) {
-    border-bottom: 1px solid var(--stone-100);
+.nutrition tr + tr {
+    border-top: 1px solid var(--stone-100);
 }
 
 .nutrition td:last-child {
     font-weight: 600;
     color: var(--brown-800);
-}
-
-.nutrition tr::not-last-child {
-    border-bottom: 1px solid var(--stone-100);
 }
 
 @media (width > 375px) {
