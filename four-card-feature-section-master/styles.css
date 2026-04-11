@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap");
+
+*,
+*::before,
+*::after {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+:root {
+    --red: hsl(0, 78%, 62%);
+    --cyan: hsl(180, 62%, 55%);
+    --orange: hsl(34, 97%, 64%);
+    --blue: hsl(212, 86%, 64%);
+
+    --grey-500: hsl(234, 12%, 34%);
+    --grey-400: hsl(212, 6%, 44%);
+    --white: hsl(0, 0%, 100%);
+
+    --space-500: 40px;
+    --space-400: 32px;
+    --space-300: 24px;
+    --space-200: 16px;
+    --space-100: 8px;
+    --border-size: 4px;
+    --space-quarter: 0.25px;
+    --space-0: 0px;
+
+    --copy-font: "Poppins", sans-serif;
+
+    --font-size-36: 36px;
+    --font-size-24: 24px;
+    --font-size-20: 20px;
+    --font-size-15: 15px;
+    --font-size-13: 13px;
+
+    --line-height-140: 140%;
+    --line-height-160: 160%;
+
+    --mobile-brk-pt: 375px;
+    --mobile-width: 314px;
+    --tablet-brk-pt: 768px;
+    --tablet-width: 660px;
+    --tablet-header-width: 540px;
+    --desktop-brk-pt: 1440px;
+    --desktop-width: 1114px;
+    --desktop-card-width: 350px;
+
+    --svg-dimensions: 64px;
+    --card-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.text-preset-1 {
+    line-height: 140%;
+    letter-spacing: var(--space-quarter);
+}
+
+.text-preset-2 {
+    line-height: 140%;
+    letter-spacing: var(--space-quarter);
+}
+
+.text-preset-3 {
+    line-height: 135%;
+    letter-spacing: var(--space-0);
+}
+
+.text-preset-4 {
+    line-height: 140%;
+    letter-spacing: var(--space-0);
+}
+
+.text-preset-5 {
+    line-height: 160%;
+    letter-spacing: var(--space-0);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+body {
+    font-size: var(--font-size-15);
+    font-family: var(--copy-font);
+    color: var(--grey-500);
+    display: grid;
+    padding: var(--space-500) 0px;
+    place-items: center;
+    margin: 0 auto;
+}
+
+main {
+    width: min(var(--mobile-brk-pt) - var(--space-500));
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-200);
+}
+
+h1 {
+    font-weight: 200;
+    font-size: var(--font-size-24);
+}
+
+h1 span {
+    display: block;
+}
+
+h1 span {
+    font-weight: 600;
+    font-style: normal;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-200);
+}
+
+header p,
+header h1 {
+    padding: 0px var(--space-200);
+}
+
+header p {
+    font-size: var(--font-size-15);
+}
+
+.grey-500 {
+    color: var(--grey-500);
+}
+
+.grey-400 {
+    color: var(--grey-400);
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--space-500);
+    gap: var(--space-500);
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-200);
+    padding: var(--space-300);
+    box-shadow: var(--card-box-shadow);
+    border-top: var(--border-size) solid;
+    border-radius: var(--border-size) var(--border-size) var(--space-100)
+        var(--space-100);
+}
+
+.card p {
+    color: var(--grey-400);
+}
+
+.card .icon-section {
+    padding: var(--space-200);
+}
+
+.card img {
+    height: var(--svg-dimensions);
+    width: var(--svg-dimensions);
+}
+
+.border-cyan {
+    border-color: var(--cyan);
+}
+
+.border-orange {
+    border-color: var(--orange);
+}
+
+.border-red {
+    border-color: var(--red);
+}
+
+.border-blue {
+    border-color: var(--blue);
+}
+
+.icon-section {
+    text-align: right;
+}
+
+@media (width >= 768px) {
+    main {
+        width: var(--tablet-width);
+    }
+
+    header {
+        text-align: center;
+        max-width: var(--tablet-header-width);
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: var(--font-size-36);
+    }
+
+    .card {
+        width: var(--mobile-width);
+    }
+
+    .cards {
+        display: grid;
+        grid-template-areas:
+            "cell-1 cell-1"
+            "cell-2 cell-3"
+            "cell-4 cell-4";
+        gap: var(--space-500);
+    }
+
+    .team {
+        grid-area: cell-1;
+        justify-self: center;
+    }
+
+    .supervisor {
+        grid-area: cell-2;
+    }
+
+    .karma {
+        grid-area: cell-3;
+    }
+
+    .calculator {
+        grid-area: cell-4;
+        justify-self: center;
+    }
+}
+
+@media (width >= 1440px) {
+    main {
+        width: var(--desktop-width);
+        padding: var(--space-500) var(--space-0);
+    }
+
+    .cards {
+        grid-template-areas:
+            "cell-1 cell-2 cell-3"
+            "cell-1 cell-4 cell-3";
+        align-items: center;
+    }
+
+    .supervisor {
+        grid-area: cell-1;
+    }
+
+    .team {
+        grid-area: cell-2;
+    }
+
+    .karma {
+        grid-area: cell-4;
+    }
+
+    .calculator {
+        grid-area: cell-3;
+    }
+
+    .card {
+        width: var(--desktop-card-width);
+    }
+}
