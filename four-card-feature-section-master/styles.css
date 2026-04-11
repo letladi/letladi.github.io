@@ -17,6 +17,7 @@
     --grey-500: hsl(234, 12%, 34%);
     --grey-400: hsl(212, 6%, 44%);
     --white: hsl(0, 0%, 100%);
+    --body-background: #fafafa;
 
     --space-500: 40px;
     --space-400: 32px;
@@ -88,6 +89,7 @@ body {
     font-size: var(--font-size-15);
     font-family: var(--copy-font);
     color: var(--grey-500);
+    background-color: var(--body-background);
     display: grid;
     padding: var(--space-500) 0px;
     place-items: center;
