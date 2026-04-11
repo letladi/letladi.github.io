@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500..700;1,500..700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&display=swap");
+
+*,
+::before,
+::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: hsl(212, 21%, 14%);
+    --grey: hsl(228, 12%, 48%);
+    --cream: hsl(30, 38%, 92%);
+    --white: hsl(0, 0%, 100%);
+    --green-500: hsl(158, 36%, 37%);
+    --green-700: hsl(158, 42%, 18%);
+
+    --body-font-size: 14px;
+
+    --space-500: 40px;
+    --space-400: 32px;
+    --space-300: 24px;
+    --space-200: 16px;
+    --space-100: 8px;
+    --space-50: 4px;
+    --space-0: 0px;
+
+    --Montserrat-font: "Montserrat", sans-serif;
+    --Fraunces-font: "Fraunces", serif;
+    --medium-font-weight: 500;
+    --bold-font-weight: 700;
+
+    --line-height-100: 100%;
+    --line-height-110: 110%;
+    --line-height-120: 120%;
+    --line-height-160: 160%;
+
+    --letter-spacing-0: var(--space-0);
+    --letter-spacing-5: 5px;
+
+    --font-size-32: 32px;
+    --font-size-14: 14px;
+    --font-size-13: 13px;
+    --font-size-12: 12px;
+
+    --mobile-img-height: 342px;
+    --mobile-card-width: 350px;
+    --desktop-card-height: 456px;
+    --desktop-img-height: 100%;
+    --desktop-content-width: 600px;
+    --icon-dimension: 18px;
+    --transition-time: 0.3s;
+}
+
+.grey {
+    color: var(--grey);
+}
+
+.green-500 {
+    color: var(--green-500);
+}
+
+.black {
+    color: var(--black);
+}
+
+.white {
+    color: var(--white);
+}
+
+.text-preset-1 {
+    font-size: var(--font-size-32);
+    font-family: var(--Fraunces-font);
+    font-weight: var(--bold-font-weight);
+    line-height: var(--line-height-100);
+    letter-spacing: var(--letter-spacing-0);
+}
+
+.text-preset-2 {
+    font-family: var(--Montserrat-font);
+    font-weight: var(--bold-font-weight);
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-110);
+    letter-spacing: var(--letter-spacing-0);
+}
+
+.text-preset-3 {
+    font-family: var(--Montserrat-font);
+    font-weight: var(--medium-font-weight);
+    letter-spacing: var(--letter-spacing-0);
+    line-height: var(--line-height-160);
+    font-size: var(--font-size-14);
+}
+
+.text-preset-4 {
+    font-family: var(--Montserrat-font);
+    font-weight: var(--medium-font-weight);
+    letter-spacing: var(--letter-spacing-5);
+    line-height: var(--line-height-120);
+    font-size: var(--font-size-12);
+}
+
+.text-preset-5 {
+    font-family: var(--Montserrat-font);
+    font-size: var(--font-size-13);
+    letter-spacing: var(--letter-spacing-0);
+    line-height: var(--line-height-120);
+    font-weight: var(--medium-font-weight);
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.vertical-align-top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-200);
+}
+
+body {
+    font-size: var(--body-font-size);
+    padding: var(--space-500) 0;
+    background-color: var(--cream);
+    display: grid;
+    place-items: center;
+    width: auto;
+}
+
+main {
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr;
+    width: min(var(--mobile-card-width) - var(--space-200));
+    border-radius: var(--space-100);
+}
+
+img {
+    width: 100%;
+    border-radius: var(--space-100) var(--space-100) var(--space-0)
+        var(--space-0);
+    height: var(--mobile-img-height);
+}
+
+section {
+    padding: var(--space-300);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-300);
+}
+
+button {
+    display: flex;
+    background-color: var(--green-500);
+    padding: var(--space-200) var(--space-0);
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-100);
+    border-radius: var(--space-50);
+    border: 0;
+}
+
+button:active,
+button:hover {
+    background-color: var(--green-700);
+    transition: var(--transition-time);
+    cursor: pointer;
+}
+
+button img {
+    height: var(--icon-dimension);
+    width: var(--icon-dimension);
+}
+
+@media (width >=768px) {
+    body {
+        height: 100dvh;
+    }
+    main {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: var(--desktop-card-height);
+        width: var(--desktop-content-width);
+    }
+
+    picture img {
+        height: var(--desktop-card-height);
+        border-radius: var(--space-100) var(--space-0) var(--space-0)
+            var(--space-100);
+    }
+
+    section {
+        gap: var(--space-400);
+    }
+}
